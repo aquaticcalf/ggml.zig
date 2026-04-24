@@ -18,7 +18,7 @@ Add this dependency to your Zig project:
 zig fetch --save https://github.com/aquaticcalf/ggml.zig/archive/refs/heads/master.tar.gz
 ```
 
-This will add `ggml_zig` to your `build.zig.zon` dependencies.
+This will add `ggml` to your `build.zig.zon` dependencies.
 
 ## Building
 
@@ -39,22 +39,22 @@ zig build test
 In your `build.zig`, add the dependency:
 
 ```zig
-const ggml_dep = b.dependency("ggml_zig", .{
+const ggml_dep = b.dependency("ggml", .{
     .target = target,
     .optimize = optimize,
 });
 
 // For executables:
-exe.root_module.addImport("ggml_zig", ggml_dep.module("ggml_zig"));
+exe.root_module.addImport("ggml", ggml_dep.module("ggml"));
 
 // For libraries:
-lib.root_module.addImport("ggml_zig", ggml_dep.module("ggml_zig"));
+lib.root_module.addImport("ggml", ggml_dep.module("ggml"));
 ```
 
 Then in your Zig code:
 
 ```zig
-const ggml = @import("ggml_zig");
+const ggml = @import("ggml");
 
 // Initialize context
 const params = ggml.InitParams{

@@ -63,17 +63,17 @@ pub fn build(b: *std.Build) void {
 
     b.installArtifact(ggml_lib);
 
-    const ggml_zig_mod = b.createModule(.{
+    const ggml_mod = b.createModule(.{
         .root_source_file = b.path("src/ggml.zig"),
         .target = target,
         .optimize = optimize,
         .link_libc = true,
     });
-    ggml_zig_mod.addIncludePath(ggml_src);
-    ggml_zig_mod.addIncludePath(ggml_include);
-    ggml_zig_mod.linkLibrary(ggml_lib);
+    ggml_mod.addIncludePath(ggml_src);
+    ggml_mod.addIncludePath(ggml_include);
+    ggml_mod.linkLibrary(ggml_lib);
 
-    const tests = b.addTest(.{ .root_module = ggml_zig_mod });
+    const tests = b.addTest(.{ .root_module = ggml_mod });
     const run_tests = b.addRunArtifact(tests);
     const test_step = b.step("test", "Run library tests");
     test_step.dependOn(&run_tests.step);

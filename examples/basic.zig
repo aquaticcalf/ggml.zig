@@ -1,5 +1,5 @@
 const std = @import("std");
-const ggml = @import("ggml_zig");
+const ggml = @import("ggml");
 
 pub fn main() !void {
     const stdout = std.io.getStdOut().writer();
