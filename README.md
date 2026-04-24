@@ -15,7 +15,7 @@ A Zig wrapper for the [GGML](https://github.com/ggerganov/ggml) library - a tens
 Add this dependency to your Zig project:
 
 ```bash
-zig fetch --save https://github.com/aquaticcalf/ggml.zig/archive/refs/heads/main.tar.gz
+zig fetch --save https://github.com/aquaticcalf/ggml.zig/archive/refs/heads/master.tar.gz
 ```
 
 This will add `ggml_zig` to your `build.zig.zon` dependencies.
