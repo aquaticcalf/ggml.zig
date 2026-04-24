@@ -10,6 +10,16 @@ A Zig wrapper for the [GGML](https://github.com/ggerganov/ggml) library - a tens
 - Support for tensor operations, backends, and graph computation
 - GGUF model format support
 
+## Installation
+
+Add this dependency to your Zig project:
+
+```bash
+zig fetch --save https://github.com/aquaticcalf/ggml.zig/archive/refs/heads/main.tar.gz
+```
+
+This will add `ggml_zig` to your `build.zig.zon` dependencies.
+
 ## Building
 
 ```bash
@@ -26,7 +36,7 @@ zig build test
 
 ## Usage
 
-Add as a dependency in your `build.zig`:
+In your `build.zig`, add the dependency:
 
 ```zig
 const ggml_dep = b.dependency("ggml_zig", .{
@@ -34,7 +44,11 @@ const ggml_dep = b.dependency("ggml_zig", .{
     .optimize = optimize,
 });
 
+// For executables:
 exe.root_module.addImport("ggml_zig", ggml_dep.module("ggml_zig"));
+
+// For libraries:
+lib.root_module.addImport("ggml_zig", ggml_dep.module("ggml_zig"));
 ```
 
 Then in your Zig code:
